@@ -8,6 +8,7 @@
 2. Throw error with request url
 3. Backup URL
 4. Restful API
+5. Fallback response
 
 
 ## Installation
