@@ -9,6 +9,7 @@
 3. Backup URL
 4. Restful API
 5. Fallback response
+6. Timeout
 
 
 ## Installation
@@ -36,7 +37,8 @@ const request = new Request({
   /*
     Will return this if request error
   */
-  fallbackResponse: { tom: true }
+  fallbackResponse: { tom: true },
+  timeout: 30000
 })
 
 
