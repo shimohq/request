@@ -1,6 +1,6 @@
 {
   "name": "shimo-request",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "simple http request library based on request-promise",
   "homepage": "https://github.com/shimohq/request",
   "author": {

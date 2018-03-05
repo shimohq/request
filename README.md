@@ -21,9 +21,10 @@ $ npm install --save shimo-request
 ## Usage
 
 ```js
-const Request = require('shimo-request');
+const request = require('shimo-request');
+const { Request } = request;
 
-const request = new Request({
+const requestInstance = new Request({
   baseUrl: 'http://baseurl.com',
   /*
     Will throw Error until retry 3 times
@@ -43,18 +44,18 @@ const request = new Request({
 
 
 // As same as request-promise, you must provide `/` in url:
-request.get('/users')
+requestInstance.get('/users')
 
 // Restful API:
-request.get('user') // equal `request.get('/users')`
-request.get('user', 1) // equal `request.get('/users/1')`
-request.get('user', 1, 'file') // equal `request.get('/users/1/files')`
-request.get('user', 1, 'file', 'abc') // equal `request.get('/users/1/files/abc')`
-request.get('user', 1, '/file', '/abc') // equal `request.get('/users/1/file/abc')`
+requestInstance.get('user') // equal `requestInstance.get('/users')`
+requestInstance.get('user', 1) // equal `requestInstance.get('/users/1')`
+requestInstance.get('user', 1, 'file') // equal `requestInstance.get('/users/1/files')`
+requestInstance.get('user', 1, 'file', 'abc') // equal `requestInstance.get('/users/1/files/abc')`
+requestInstance.get('user', 1, '/file', '/abc') // equal `requestInstance.get('/users/1/file/abc')`
 
 // Throw error
 try {
-  await request.get('user')
+  await requestInstance.get('user')
 } catch (e) {
   /*
     opts: {"method":"get","url":"http://localhost:61925/backup","backupUrl":"http://localhost:61925/backup","baseUrl":"http://localhost:61925","retry":1}]
@@ -65,11 +66,14 @@ try {
 }
 
 // Override options
-request.get('file', 1, '/view_count', {
+requestInstance.get('file', 1, '/view_count', {
   fallbackResponse: { count: 0 },
   timeout: 3000,
   retry: 2
 })
+
+// Directly
+request('http://google.com', 'user', 2);
 ```
 
 ## License
