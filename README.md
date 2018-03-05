@@ -63,6 +63,13 @@ try {
   */
   console.log(e.stack)
 }
+
+// Override options
+request.get('file', 1, '/view_count', {
+  fallbackResponse: { count: 0 },
+  timeout: 3000,
+  retry: 2
+})
 ```
 
 ## License
