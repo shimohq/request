@@ -32,6 +32,11 @@ const request = new Request({
     Will try backup url after base url fail 3(retry) times
   */
   backupUrl: 'http://baseurl-backup.com',
+
+  /*
+    Will return this if request error
+  */
+  fallbackResponse: { tom: true }
 })
 
 
@@ -49,8 +54,12 @@ request.get('user', 1, '/file', '/abc') // equal `request.get('/users/1/file/abc
 try {
   await request.get('user')
 } catch (e) {
-  // connect ETIMEDOUT: GET /users
-  console.log(e.message)
+  /*
+    opts: {"method":"get","url":"http://localhost:61925/backup","backupUrl":"http://localhost:61925/backup","baseUrl":"http://localhost:61925","retry":1}]
+     origin stack:
+     RequestError: ....
+  */
+  console.log(e.stack)
 }
 ```
 
