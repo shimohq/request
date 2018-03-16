@@ -9,7 +9,6 @@
 3. Backup URL
 4. Restful API
 5. Fallback response
-6. Timeout
 
 
 ## Installation
@@ -38,8 +37,7 @@ const requestInstance = new Request({
   /*
     Will return this if request error
   */
-  fallbackResponse: { tom: true },
-  timeout: 30000
+  fallbackResponse: { tom: true }
 })
 
 
@@ -68,7 +66,6 @@ try {
 // Override options
 requestInstance.get('file', 1, '/view_count', {
   fallbackResponse: { count: 0 },
-  timeout: 3000,
   retry: 2
 })
 
